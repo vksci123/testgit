@@ -1,0 +1,435 @@
+<!-- Automatically generated from index.partial.html. DO NOT EDIT. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Reaxion Football</title>
+    <link rel="stylesheet" href="/styles/rules/style.css"/>
+    <link rel="stylesheet" href="/styles/prostrap/less/bootstrap.css"/>
+    <link rel="stylesheet" href="/components/bootstrap3/font-awesome-4.0.0/css/font-awesome.css"/>
+    <!--link rel="icon" href="/styles/home/nptel_fav.png"/--!> 
+    <script type= "text/javascript" src = "/components/jquery/jquery.js"></script>
+    <script type= "text/javascript" src = "/components/bootstrap3/js/bootstrap.js"></script>
+    <script type = "text/javascript"  src= "/components/underscore/underscore.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+   
+    <!-- Tournament select -->
+    <div id = "home_target">
+    </div>
+    
+    <!-- Nav bar -->
+    
+    <div class="container-fluid nav_bar" tf-template='header_partial.content'>
+    
+        <%
+            var tournament_obj = obj[0] ;
+        %>
+        <div class="crx_logo hidden-sm hidden-xs">
+            <a href="/<%= tournament_obj.urlName %>/home"> 
+                <img src="<%= tournament_obj.tournamentLogo.url %>" class="img-responsive" style="height: 100px">
+            </a>
+        </div>
+        <div class="visible-sm visible-xs nav_item col-xs-6 col-sm-6">
+            <div class="text-danger mobile_heading"><%= tournament_obj.name %></div>
+        </div>
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold"> 
+            <a href="/<%= tournament_obj.urlName %>/fixtures" header_nav_name="fixtures"> 
+                Fixtures 
+                <div class="hide caret-down" header_nav="fixtures">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+            
+        </div>
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold" > 
+            <a href="/<%= tournament_obj.urlName %>/results" header_nav_name="results"> 
+                Results 
+                <div class="hide caret-down" header_nav="results">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+    
+        </div>
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold" show_nav="true"> 
+            <!--a href="/<%= tournament_obj.urlName %>/teams"--> 
+                Teams
+            
+                <div class="hide caret-down" header_nav="team" >
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+        </div>
+    
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold"> 
+            <a href="/<%= tournament_obj.urlName %>/points" header_nav_name="points">
+                Points
+                <div class="hide caret-down" header_nav="points">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+            
+        </div> 
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold"> 
+            <a href="/<%= tournament_obj.urlName %>/gallery" header_nav_name="gallery"> 
+                Gallery 
+    
+                <div class="hide caret-down" header_nav="gallery">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+        </div> 
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold"> 
+            <a href="/<%= tournament_obj.urlName %>/rules" header_nav_name="rules"> 
+                Rules
+                <div class="hide caret-down" header_nav="rules">
+                    <i class="fa fa-caret-down"></i>
+                </div>
+            </a>
+        </div> 
+        <div class="nav_item hidden-xs hidden-sm text-uppercase text-bold" data-toggle="modal" data-target="#myModal">     
+            Archive
+        </div> 
+        <div class="vertical_click hidden-md hidden-lg col-sm-6 col-xs-6">
+            <i class="fa fa-bars"></i>
+            <div class = "mobile_submenu">
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/fixtures"> 
+                        Fixtures 
+                        
+                    </a>
+                </div>
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/results"> 
+                        Results
+                       
+                    </a>
+                </div>
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/team/manchester_united"> 
+                        Teams
+                      
+                    </a>
+                </div>
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/points"> 
+                        Points
+                     
+                    </a>
+                </div>
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/gallery"> 
+                        Gallery
+                    
+                    </a>
+                </div>
+                <div class="submenu_element">
+                    <a href="/<%= tournament_obj.urlName %>/rules"> 
+                        Rules
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="white_bg team_dropdown" show_nav="true">
+            <%
+    
+                var teams = tournament_obj.teams ;
+                var groups = tournament_obj.groups ;
+    
+                _.each(groups, function(group) 
+                {
+    
+                    var team_group = _.filter(teams, function(team)
+                                            {
+                                                return team.group == group.name ;
+                                            }) ;
+            %>
+    
+                    <div class="col-md-3 group_container">
+                        <div class="group_name">
+                            <%= group.name %>
+                        </div>
+    
+                        <div class="team_list">
+                    <% 
+                            if(team_group.length > 0)
+                            {
+                                _.each(team_group, function(team) 
+                                    {
+                    %> 
+                                        <a href="/<%= tournament_obj.urlName %>/team/<%= team.urlName %>" > 
+                                            <div class="team_name">
+                                                <div class="team_img">
+                                                    <img src="<%= team.logo.url %>" class="img-responsive">
+                                                </div>
+                                                <div class="indiv_team_name">  
+                                                    <%= team.name%> 
+                                                </div>
+                                            </div>
+                                        </a>
+                    <%      
+                                    }) ;
+                            }
+                    %>
+                        
+                        </div>
+                    </div>
+            <%
+                }) ;
+            %>
+        </div>
+    </div>
+    
+    <!--Modal for Archive-->
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close text-danger skew" data-dismiss="modal" aria-hidden="true">
+                        <div class="skew_content">&times;</div>
+                    </button>
+                    <h4 class="modal-title text-center" id="myModalLabel">
+                        <div class="skew_content">
+                            Archives
+                        </div>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6">
+                        <div class="text-danger text-uppercase">
+                            Sort by tournament
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                City
+                            </label>
+                            <select class="form-control">
+                                <option>Chennai </option>
+                                <option>Trichy </option>
+                                <option>Coimbatore </option>
+                            </select>
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                Tournament type
+                            </label>
+                            <select class="form-control">
+                                <option>Corporate</option>
+                                <option>Knockout League</option>
+                                <option>District </option>
+                            </select>
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                Tournament name
+                            </label>
+                            <select class="form-control">
+                                <option>Air Asia Reaxion Cup</option>
+                                <option>World T20</option>
+                                <option>Barclays</option>
+                            </select>
+                        </div>
+                        <div class="skew go_button">
+                            <div class="skew_content">GO</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-danger text-uppercase">
+                            Sort by team
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                City
+                            </label>
+                            <select class="form-control">
+                                <option>Chennai </option>
+                                <option>Trichy </option>
+                                <option>Coimbatore </option>
+                            </select>
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                Tournament type
+                            </label>
+                            <select class="form-control">
+                                <option>Corporate</option>
+                                <option>Knockout League</option>
+                                <option>District </option>
+                            </select>
+                        </div>
+                        <div class="sort_selector">
+                            <label class="text-left">
+                                Tournament name
+                            </label>
+                            <select class="form-control">
+                                <option>Air Asia Reaxion Cup</option>
+                                <option>World T20</option>
+                                <option>Barclays</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <div class="skew go_button">
+                                <div class="skew_content">GO</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    
+    </script>
+
+    <div class="shades_container hidden-sm hidden-xs">
+        <div class="shades_left">
+            <img src="/styles/rules/shades_left.png" class="img-responsive">
+        </div>
+        <div class="shades_right">
+            <img src="/styles/rules/shades_right.png" class="img-responsive">
+        </div>
+    </div>
+ 
+    <!-- Automatically generated from content.partial.html. DO NOT EDIT. -->
+    <div class="col-md-3 rule_menu_select text-bold active">
+                GENERAL
+            <i class="fa fa-caret-down rule_menu_select_active"></i>
+        </div>
+        <div class="col-md-3 rule_menu_select text-bold">
+            MATCH
+        </div>
+        <div class="col-md-3 rule_menu_select text-bold">
+            LEAGUE STAGE
+        </div>
+        <div class="col-md-3 rule_menu_select text-bold">
+            KNOCKOUT STAGE 
+        </div>
+    </div>
+    
+    <div class="container-fluid mobile_select visible-sm visible-xs">
+        <select class="form-control">
+            <option>GENERAL</option>
+            <option>MATCH</option>
+            <option>LEAGUE STAGE</option>
+            <option>KNOCKOUT STAGE</option>
+        </select>
+    </div>
+    
+    <div class="rules_container container-fluid">
+        <div class="row">
+            <h2 class="text-center text-danger">GENERAL RULES</h3>
+        </div>
+        <div class="rules container-fluid">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+                <h3 class="rule_number text-danger">#1</h3>
+            </div>
+            <div class="rule_description col-md-11 col-sm-11 col-xs-9">
+                The game can be played on either natural or artificial surfaces, the surface must be green and rectangular in shape.  The two long sides of the rectangle are called touch lines and the two shorter sides are called goal lines.  The field is divided in half by the halfway line.
+            </div>
+        </div>
+        <div class="rules container-fluid">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+                <h3 class="rule_number text-danger">#2</h3>
+            </div>
+            <div class="rule_description col-md-11 col-sm-11 col-xs-9">
+                The game can be played on either natural or artificial surfaces, the surface must be green and rectangular in shape.  The two long sides of the rectangle are called touch lines and the two shorter sides are called goal lines.  The field is divided in half by the halfway line.
+            </div>
+        </div>
+        <div class="rules container-fluid">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+                <h3 class="rule_number text-danger">#3</h3>
+            </div>
+            <div class="rule_description col-md-11 col-sm-11 col-xs-9">
+                The game can be played on either natural or artificial surfaces, the surface must be green and rectangular in shape.  The two long sides of the rectangle are called touch lines and the two shorter sides are called goal lines.  The field is divided in half by the halfway line.
+            </div>
+        </div>
+        <div class="rules container-fluid">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+                <h3 class="rule_number text-danger">#4</h3>
+            </div>
+            <div class="rule_description col-md-11 col-sm-11 col-xs-9">
+                The game can be played on either natural or artificial surfaces, the surface must be green and rectangular in shape.  The two long sides of the rectangle are called touch lines and the two shorter sides are called goal lines.  The field is divided in half by the halfway line.
+            </div>
+        </div>
+        <div class="rules container-fluid">
+            <div class="col-md-1 col-sm-1 col-xs-3">
+                <h3 class="rule_number text-danger">#5</h3>
+            </div>
+            <div class="rule_description col-md-11 col-sm-11 col-xs-9">
+                The game can be played on either natural or artificial surfaces, the surface must be green and rectangular in shape.  The two long sides of the rectangle are called touch lines and the two shorter sides are called goal lines.  The field is divided in half by the halfway line.
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row download_link text-danger text-center">
+            <a href="#"><i>DOWNLOAD RULES AS PDF</i></a>
+        </div>
+    
+    
+        <div class="container-fluid">
+            <!-- Automatically generated from sarath.partial.html. DO NOT EDIT. -->
+            
+            <div> 
+                test da
+            </div>
+        </div>
+
+    
+    <div class="container-fluid footer">
+        <div class="pull-left">
+            <img src="/styles/home/footer_football.png">
+            <img src="/styles/home/crxlogo.png" style="height: 50px; padding: 6px">
+        </div>
+        <div class="pull-right">
+            <div class="social_connect col-xs-2">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+            </div>
+            <div class="social_connect col-xs-2">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-google-plus fa-stack-1x"></i>
+                </span>
+            </div>
+            <div class="social_connect col-xs-2">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+            </div>
+            <div class="social_connect col-xs-2">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-stack-1x"></i>
+                </span>
+            </div>
+            <div class="social_connect col-xs-2">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-stack-1x"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script data-main="/scripts/common/main" src='/components/requirejs/require.js'></script>
+     <script>
+         define('initialData', [], function () 
+             {
+                console.log($(".landingpage_tooltip"));
+                $(".landingpage_tooltip").tooltip();
+                 var a = {
+                             pagename: 'rules'
+                         };
+                 return a;
+             });
+     </script>
+</body>
+</html>

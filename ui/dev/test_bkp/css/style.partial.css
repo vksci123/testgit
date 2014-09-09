@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:400,700);
+.crx-yellow_bg {
+  background-color: #f3cc05;
+}
+/*body 
+{
+    font-weight: 400;
+    padding: 0px;
+}
+*/
+.section_rules .rules_container {
+  background-color: #fff;
+  width: 65%;
+  margin: 0 auto;
+}
+.section_rules .rules_container .rule_description {
+  padding: 20px;
+}
+.section_rules .rules_menu_container {
+  margin-bottom: 30px;
+  padding: 0px !important;
+}
+.section_rules .rules_menu_container .rule_menu_select {
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+.section_rules .rules_menu_container .rule_menu_select.active {
+  color: #d4303d;
+  border-bottom: 4px solid #d4303d;
+}
+.section_rules .rules_menu_container .rule_menu_select:hover {
+  color: #d4303d;
+}
+.section_rules .rules_menu_container .rule_menu_select .rule_menu_select_active {
+  position: absolute;
+  left: 45%;
+  top: 62px;
+  font-size: 20px;
+}
+.section_rules .mobile_select {
+  padding: 20px 0px !important;
+}
+.section_rules .download_link {
+  padding: 20px;
+  font-size: 16px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .section_rules .rules_container {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .section_rules .rules_container {
+    width: 100%;
+  }
+}

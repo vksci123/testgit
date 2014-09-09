@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Reaxion Football</title>
+    <link rel="stylesheet" href="/styles/rules/style.css"/>
+    <link rel="stylesheet" href="/styles/prostrap/less/bootstrap.css"/>
+    <link rel="stylesheet" href="/components/bootstrap3/font-awesome-4.0.0/css/font-awesome.css"/>
+    <!--link rel="icon" href="/styles/home/nptel_fav.png"/--!> 
+    <script type= "text/javascript" src = "/components/jquery/jquery.js"></script>
+    <script type= "text/javascript" src = "/components/bootstrap3/js/bootstrap.js"></script>
+    <script type = "text/javascript"  src= "/components/underscore/underscore.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+   
+    {{{ PARTIAL '/partials/header' }}}
+
+    {{{ PARTIAL '/partials/shades' }}}
+ 
+    {{{ PARTIAL '/test_bkp/templates/content' }}}
+
+    
+    {{{ PARTIAL '/partials/footer' }}}
+
+    <script data-main="/scripts/common/main" src='/components/requirejs/require.js'></script>
+     <script>
+         define('initialData', [], function () 
+             {
+                console.log($(".landingpage_tooltip"));
+                $(".landingpage_tooltip").tooltip();
+                 var a = {
+                             pagename: 'rules'
+                         };
+                 return a;
+             });
+     </script>
+</body>
+</html>
